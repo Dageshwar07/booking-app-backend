@@ -11,6 +11,9 @@ const imageDownloader = require('image-downloader');
 const multer = require('multer');
 const fs = require('fs');
 
+const PORT = process.env.PORT || 6010
+
+
 require('dotenv').config();
 const app = express();
 
@@ -195,4 +198,9 @@ app.get('/bookings', async (req,res) => {
   res.json( await Booking.find({user:userData.id}).populate('place') );
 });
 
-app.listen(4000);
+
+
+
+app.listen(PORT,()=>{
+  console.log(`Server start at port no ${PORT}`)
+})
