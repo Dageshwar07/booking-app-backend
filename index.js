@@ -39,9 +39,7 @@ function getUserDataFromReq(req) {
   });
 }
 
-app.get('/test', (req,res) => {
-  res.json('test ok');
-});
+
 
 app.post('/register', async (req,res) => {
   const {name,email,password} = req.body;
@@ -197,7 +195,9 @@ app.get('/bookings', async (req,res) => {
   res.json( await Booking.find({user:userData.id}).populate('place') );
 });
 
-
+app.get('/test', (req,res) => {
+  res.json('test ok');
+});
 
 
 app.listen(PORT,()=>{
